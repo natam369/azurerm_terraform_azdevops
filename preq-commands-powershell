@@ -42,4 +42,6 @@ az keyvault secret set --vault-name "keyvault-devops01" --name "vm-admin-passwor
 az keyvault set-policy --name "keyvault-devops01" --spn "0db8ed92-a623-4c37-a03c-42d8398f7c3" --secret-permissions get list	
 
 
+	create var group
 	
+az pipelines variable-group create --name "Terraform-BuildVariables" --authorize true --organization https://dev.azure.com/TheLazyAdministrator/ --project "Company - The Lazy Administrator" --variables foo=bar
