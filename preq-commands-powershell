@@ -1,0 +1,45 @@
+prequesites for azure terrraform infra using azdevops
+
+
+	service principle
+
+az ad sp create-for-rbac --name AzureDevOps --role="Contributor"
+
+	resource group creation
+
+az group create --name AzureDevOps --location "North Central US"
+
+	storage account
+
+az storage account create --resource-group AzureDevOps --name sa01azuredevops --sku Standard_LRS --encryption-services blob
+
+	storage accountkey
+
+az storage account keys list --resource-group AzureDevOps --account-name sa01azuredevops --query [0].value -o tsv
+
+	storage container
+
+az storage container create --name container01-azuredevops --account-name sa01azuredevops --account-key "AWB3DFSDFwdml17DiJCXJ2WliJVfsdfnA3/AJr666756o36xC2PgdfdfF4odfdfczlw=="
+
+	keyvault
+
+az keyvault create -n keyvault-devops01 -g AzureDevops -l "North Central US"
+
+	Add the Storage Account Access Key to Key Vault
+
+az keyvault secret set --vault-name "keyvault-devops01" --name "sa01-azdo-accesskey" --value "AWB3wdmMNSbdjnJKBkr+09PJtnA3/AJrj4RdFdjkBNFkjsdfkVtczlw=="	
+
+	Add the Service Principal Password to Key Vault
+	
+az keyvault secret set --vault-name "keyvault-devops01" --name "spn-azuredevops-password" --value "e42ce33r-bff1-4c26-ad0d-98456078"
+
+	Add the VM Admin Password to Key Vault
+	
+az keyvault secret set --vault-name "keyvault-devops01" --name "vm-admin-password" --value "Ch1c@goIllinois!"
+
+	Allow the SPN Access to Key Vault
+	
+az keyvault set-policy --name "keyvault-devops01" --spn "0db8ed92-a623-4c37-a03c-42d8398f7c3" --secret-permissions get list	
+
+
+	
