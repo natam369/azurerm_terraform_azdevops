@@ -1,0 +1,21 @@
+Create the Service Principal Name (SPN) and Client Secret
+Create the Azure Resource Group and Resources
+Create the Storage Account
+Get the Storage Account Key
+Create the Storage Container
+Create the Key Vault
+	Add the Storage Account Access Key to Key Vault
+	Add the Service Principal Password to Key Vault
+	Add the VM Admin Password to Key Vault
+	Allow the SPN Access to Key Vault
+CREATE AND CONFIGURE AZURE DEVOPS
+Create the Organization
+Create the Team Project
+Create the Repository
+Create the Variable Group
+Connect the Variable Group to Key Vault
+	ADDING THE TERRAFORM CODE TO OUR AZURE DEVOPS REPOSITORY
+Variables.tf
+Main.tf
+	Install the Terraform Azure DevOps Extension
+Create the Azure DevOps Pipeline
